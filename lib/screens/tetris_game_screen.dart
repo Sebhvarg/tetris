@@ -9,6 +9,7 @@ import '../widgets/game_board.dart';
 import '../widgets/next_piece_widget.dart';
 import '../widgets/game_info.dart';
 import '../widgets/game_controls.dart';
+import '../services/audio_service.dart';
 
 class TetrisGameScreen extends StatefulWidget {
   const TetrisGameScreen({super.key});
@@ -31,6 +32,7 @@ class _TetrisGameScreenState extends State<TetrisGameScreen> {
   int linesCleared = 0;
   bool gameOver = false;
   bool isPaused = false;
+  final AudioService _audioService = AudioService();
 
   @override
   void initState() {
@@ -72,9 +74,7 @@ class _TetrisGameScreenState extends State<TetrisGameScreen> {
   }
 
   void spawnNewPiece() {
-    if (nextPiece == null) {
-      nextPiece = generateRandomPiece();
-    }
+    nextPiece ??= generateRandomPiece();
     
     currentPiece = nextPiece;
     nextPiece = generateRandomPiece();
@@ -227,6 +227,13 @@ class _TetrisGameScreenState extends State<TetrisGameScreen> {
     setState(() {
       isPaused = !isPaused;
     });
+    
+    // Pausar o reanudar la música según el estado del juego
+    if (isPaused) {
+      _audioService.pauseBackgroundMusic();
+    } else {
+      _audioService.resumeBackgroundMusic();
+    }
   }
 
   @override
@@ -236,7 +243,21 @@ class _TetrisGameScreenState extends State<TetrisGameScreen> {
       appBar: AppBar(
         title: const Text('Tetris'),
         backgroundColor: Colors.grey[900],
+        leading: IconButton(
+          icon: const Icon(Icons.home),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         actions: [
+          IconButton(
+            icon: Icon(_audioService.isMusicEnabled ? Icons.volume_up : Icons.volume_off),
+            onPressed: () {
+              setState(() {
+                _audioService.toggleMusic();
+              });
+            },
+          ),
           IconButton(
             icon: Icon(isPaused ? Icons.play_arrow : Icons.pause),
             onPressed: togglePause,

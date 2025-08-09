@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/tetris_game_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const TetrisApp());
@@ -16,7 +16,8 @@ class TetrisApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         brightness: Brightness.dark,
       ),
-      home: const TetrisGameScreen(),
+      home: const HomeScreen(),
+      debugShowCheckedModeBanner: false, // Quitar banner de debug
     );
   }
 }
