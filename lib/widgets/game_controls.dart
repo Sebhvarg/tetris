@@ -29,53 +29,76 @@ class GameControls extends StatelessWidget {
           style: TextStyle(color: Colors.white, fontSize: 16),
         ),
         const SizedBox(height: 16),
-        
+
         // Botón rotar
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
             onPressed: gameOver || isPaused ? null : onRotate,
-            child: const Text('Rotar'),
+            child: const Text('Rotar', style: TextStyle(color: Colors.white)),
           ),
         ),
         const SizedBox(height: 8),
-        
+
         // Botones de movimiento
         Row(
           children: [
             Expanded(
               child: ElevatedButton(
                 onPressed: gameOver || isPaused ? null : onMoveLeft,
-                child: const Text('←'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: gameOver || isPaused
+                      ? const Color.fromARGB(255, 221, 79, 79)
+                      : const Color.fromARGB(255, 0, 0, 0),
+                ),
+                child: const Text('←', style: TextStyle(color: Colors.white)),
               ),
             ),
             const SizedBox(width: 8),
             Expanded(
               child: ElevatedButton(
                 onPressed: gameOver || isPaused ? null : onMoveRight,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: gameOver || isPaused
+                      ? const Color.fromARGB(255, 221, 79, 79)
+                      : const Color.fromARGB(255, 0, 0, 0),
+                ),
                 child: const Text('→'),
               ),
             ),
           ],
         ),
         const SizedBox(height: 8),
-        
+
         // Botón caída rápida
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
             onPressed: gameOver || isPaused ? null : onHardDrop,
-            child: const Text('Caída rápida'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: gameOver || isPaused
+                  ? const Color.fromARGB(255, 221, 79, 79)
+                  : const Color.fromARGB(255, 0, 0, 0),
+            ),
+            child: const Text(
+              'Caída rápida',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ),
         const SizedBox(height: 8),
-        
+
         // Botón caída suave
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
             onPressed: gameOver || isPaused ? null : onSoftDrop,
-            child: const Text('Bajar'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: gameOver || isPaused
+                  ? const Color.fromARGB(255, 221, 79, 79)
+                  : const Color.fromARGB(255, 0, 0, 0),
+            ),
+            child: const Text('Bajar', style: TextStyle(color: Colors.white)),
           ),
         ),
       ],

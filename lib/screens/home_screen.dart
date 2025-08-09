@@ -39,45 +39,29 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Spacer(flex: 3),
-              
+              const Spacer(flex: 70),
+
               // Botón principal de jugar
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 50),
-                child: ElevatedButton(
-                  onPressed: () {
+                GestureDetector(
+                  onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => const TetrisGameScreen(),
                       ),
                     );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red.shade600,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 60,
-                      vertical: 20,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 10,
-                    shadowColor: Colors.black.withValues(alpha: 0.5),
-                  ),
-                  child: const Text(
-                    'JUGAR',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2,
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 50),
+                    child: Image.asset(
+                      'assets/images/buttons/btn_jugar.png',
+                      fit: BoxFit.contain,
+                      height: 70,
                     ),
                   ),
                 ),
-              ),
-              
+
               const SizedBox(height: 30),
-              
+
               // Botones secundarios
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -102,22 +86,26 @@ class _HomeScreenState extends State<HomeScreen> {
                         });
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text(_audioService.isMusicEnabled 
-                              ? 'Música activada' 
-                              : 'Música desactivada'),
+                            content: Text(
+                              _audioService.isMusicEnabled
+                                  ? 'Música activada'
+                                  : 'Música desactivada',
+                            ),
                             duration: const Duration(seconds: 1),
                           ),
                         );
                       },
                       icon: Icon(
-                        _audioService.isMusicEnabled ? Icons.volume_up : Icons.volume_off,
+                        _audioService.isMusicEnabled
+                            ? Icons.volume_up
+                            : Icons.volume_off,
                         color: Colors.white,
                         size: 30,
                       ),
                       padding: const EdgeInsets.all(15),
                     ),
                   ),
-                  
+
                   // Botón de puntuaciones
                   Container(
                     decoration: BoxDecoration(
@@ -149,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.all(15),
                     ),
                   ),
-                  
+
                   // Botón de información
                   Container(
                     decoration: BoxDecoration(
@@ -177,14 +165,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              
+
               const Spacer(flex: 2),
-              
+
               // Texto de créditos
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: const Text(
-                  'Tetris Flutter Edition',
+                  'Tetris - 2025',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -199,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              
+
               const SizedBox(height: 20),
             ],
           ),
