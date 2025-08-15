@@ -42,23 +42,23 @@ class _HomeScreenState extends State<HomeScreen> {
               const Spacer(flex: 70),
 
               // Botón principal de jugar
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const TetrisGameScreen(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 50),
-                    child: Image.asset(
-                      'assets/images/buttons/btn_jugar.png',
-                      fit: BoxFit.contain,
-                      height: 70,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const TetrisGameScreen(),
                     ),
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 50),
+                  child: Image.asset(
+                    'assets/images/buttons/btn_jugar.png',
+                    fit: BoxFit.contain,
+                    height: 70,
                   ),
                 ),
+              ),
 
               const SizedBox(height: 30),
 
@@ -207,15 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(color: Colors.white),
           ),
           content: const Text(
-            'Tetris es un videojuego de puzzle creado por Alexey Pajitnov en 1984.\n\n'
-            'Objetivo:\n'
-            '• Completa líneas horizontales para eliminarlas\n'
-            '• Evita que las piezas lleguen hasta arriba\n'
-            '• Consigue la mayor puntuación posible\n\n'
-            'Controles:\n'
-            '• Usa los botones para mover y rotar las piezas\n'
-            '• Caída rápida para acelerar las piezas\n'
-            '• Pausa el juego cuando necesites',
+            'Este juego fue desarrollado solo por diversión y porque en definitiva es un clásico que nunca pasa de moda. Además que no existe un buen juego de Tetris en la play store, si tienes alguna sugerencia para mejorar el juego por favor hazmelo saber.',
             style: TextStyle(color: Colors.white70),
           ),
           actions: [

@@ -22,6 +22,8 @@ class GameControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double btnSize = 45; // tamaño uniforme
+
     return Column(
       children: [
         const Text(
@@ -31,39 +33,35 @@ class GameControls extends StatelessWidget {
         const SizedBox(height: 16),
 
         // Botón rotar
-        SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-            onPressed: gameOver || isPaused ? null : onRotate,
-            child: const Text('Rotar', style: TextStyle(color: Colors.white)),
+        GestureDetector(
+          onTap: gameOver || isPaused ? null : onRotate,
+          child: Image.asset(
+            'assets/images/buttons/btn_rotar.png',
+            width: btnSize,
+            height: btnSize,
           ),
         ),
         const SizedBox(height: 8),
 
         // Botones de movimiento
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: ElevatedButton(
-                onPressed: gameOver || isPaused ? null : onMoveLeft,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: gameOver || isPaused
-                      ? const Color.fromARGB(255, 221, 79, 79)
-                      : const Color.fromARGB(255, 0, 0, 0),
-                ),
-                child: const Text('←', style: TextStyle(color: Colors.white)),
+            GestureDetector(
+              onTap: gameOver || isPaused ? null : onMoveLeft,
+              child: Image.asset(
+                'assets/images/buttons/btn_flecha_izq.png',
+                width: btnSize,
+                height: btnSize,
               ),
             ),
             const SizedBox(width: 8),
-            Expanded(
-              child: ElevatedButton(
-                onPressed: gameOver || isPaused ? null : onMoveRight,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: gameOver || isPaused
-                      ? const Color.fromARGB(255, 221, 79, 79)
-                      : const Color.fromARGB(255, 0, 0, 0),
-                ),
-                child: const Text('→'),
+            GestureDetector(
+              onTap: gameOver || isPaused ? null : onMoveRight,
+              child: Image.asset(
+                'assets/images/buttons/btn_flecha_der.png',
+                width: btnSize,
+                height: btnSize,
               ),
             ),
           ],
@@ -71,34 +69,23 @@ class GameControls extends StatelessWidget {
         const SizedBox(height: 8),
 
         // Botón caída rápida
-        SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-            onPressed: gameOver || isPaused ? null : onHardDrop,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: gameOver || isPaused
-                  ? const Color.fromARGB(255, 221, 79, 79)
-                  : const Color.fromARGB(255, 0, 0, 0),
-            ),
-            child: const Text(
-              'Caída rápida',
-              style: TextStyle(color: Colors.white),
-            ),
+        GestureDetector(
+          onTap: gameOver || isPaused ? null : onSoftDrop,
+          child: Image.asset(
+            'assets/images/buttons/btn_flecha_abj.png',
+            width: btnSize,
+            height: btnSize,
           ),
         ),
         const SizedBox(height: 8),
 
         // Botón caída suave
-        SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-            onPressed: gameOver || isPaused ? null : onSoftDrop,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: gameOver || isPaused
-                  ? const Color.fromARGB(255, 221, 79, 79)
-                  : const Color.fromARGB(255, 0, 0, 0),
-            ),
-            child: const Text('Bajar', style: TextStyle(color: Colors.white)),
+        GestureDetector(
+          onTap: gameOver || isPaused ? null : onHardDrop,
+          child: Image.asset(
+            'assets/images/buttons/btn_caida_rapida.png',
+            width: btnSize,
+            height: btnSize,
           ),
         ),
       ],
